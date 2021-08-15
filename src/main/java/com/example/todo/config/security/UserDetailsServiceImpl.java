@@ -16,6 +16,7 @@ import java.util.Optional;
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+
     @Autowired
     private  UserRepository userRepository;
 
@@ -24,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         Optional<User> user = userRepository.findByUsername(username);
 
         if (user.isEmpty()) throw new UsernameNotFoundException("Usuario [" + username  + "] não encontrado");
-
+        else
         return user.get();
     }
 }
