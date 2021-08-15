@@ -17,15 +17,17 @@ import java.util.Optional;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 
-    @Autowired
-    private  UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByUsername(username);
+  @Override
+  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    Optional<User> user = userRepository.findByUsername(username);
 
-        if (user.isEmpty()) throw new UsernameNotFoundException("Usuario [" + username  + "] não encontrado");
-        else
-        return user.get();
+    if (user.isEmpty()) {
+      throw new UsernameNotFoundException("Usuario [" + username + "] não encontrado");
+    } else {
+      return user.get();
     }
+  }
 }
